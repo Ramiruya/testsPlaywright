@@ -17,7 +17,13 @@ const { expect } = require('@playwright/test');
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 
     await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+    const removeButtonTShort = await page.locator('[data-test="remove-sauce-labs-backpack"]');
+    await expect(removeButtonTShort).toHaveText('Remove')
+    
     await page.locator('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]').click();
+    const removeButtonTShort = await page.locator('[data-test="remove-sauce-labs-bolt-t-shirt"]');
+    await expect(removeButtonTShort).toHaveText('Remove')
+    
     const cartBadge = await page.locator('.shopping_cart_badge').textContent();
     expect(cartBadge).toBe('2');
     await page.locator('.shopping_cart_link').click();
